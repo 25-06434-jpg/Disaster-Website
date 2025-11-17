@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster Information</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Types of Disasters</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">Disasters</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="disaster-grid">
+    <div class="card" onclick="openModal('typhoon')">
+      <img src="images/typhoon.jpg" alt="Typhoon">
+      <h3>Typhoon</h3>
+    </div>
+    <div class="card" onclick="openModal('earthquake')">
+      <img src="images/earthquake.jpg" alt="Earthquake">
+      <h3>Earthquake</h3>
+    </div>
+    <div class="card" onclick="openModal('fire')">
+      <img src="images/fire.jpg" alt="Fire">
+      <h3>Fire</h3>
+    </div>
+    <div class="card" onclick="openModal('flood')">
+      <img src="images/flood.jpg" alt="Flood">
+      <h3>Flood</h3>
+    </div>
+  </section>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Disaster Preparedness Project</p>
+  </footer>
+
+  <script>
+    const disasterData = {
+      typhoon: {
+        title: "Typhoon Safety Tips",
+        image: "images/typhoon.jpg",
+        content: `
+          <h3>Before:</h3>
+          <p>• Store enough food, water, and medicines for at least three days.<br>
+          • Charge your phones, radios, and flashlights.<br>
+          • Clear drainage areas and bring outdoor items inside.<br>
+          • Stay informed by listening to weather forecasts and advisories.</p>
+          
+          <h3>During:</h3>
+          <p>• Stay indoors and away from glass windows.<br>
+          • Turn off electricity if flooding occurs.<br>
+          • Avoid wading through floodwaters; they may be contaminated.<br>
+          • Follow evacuation orders immediately.</p>
+          
+          <h3>After:</h3>
+          <p>• Check your home for damage before entering.<br>
+          • Avoid downed power lines and report them.<br>
+          • Help clean up safely, and avoid stagnant water.<br>
+          • Monitor news updates for relief operations.</p>
+
+          <div class="extra-info">
+            <figure>
+              <img src="images/kit.jpg" alt="Emergency Kit">
+              <figcaption>Emergency Kit</figcaption>
+            </figure>
+            <figure>
+              <img src="images/typhoon team.jpg" alt="Response Team">
+              <figcaption>Response Team</figcaption>
+            </figure>
+            <figure>
+              <img src="images/typhoon training.jpg" alt="Safety Training">
+              <figcaption>Safety Training</figcaption>
+            </figure>
+            <figure>
+              <img src="images/map.jpg" alt="Evacuation Map">
+              <figcaption>Evacuation Map</figcaption>
+            </figure>
+          </div>
+        `
+      },
+      earthquake: {
+        title: "Earthquake Safety Tips",
+        image: "images/earthquake.jpg",
+        content: `
+          <h3>Before:</h3>
+          <p>• Secure heavy objects and furniture to walls.<br>
+          • Prepare an emergency bag with essentials.<br>
+          • Practice “Drop, Cover, and Hold On” regularly.<br>
+          • Know safe spots like sturdy tables or door frames.</p>
+          
+          <h3>During:</h3>
+          <p>• Stay calm and do not run outside immediately.<br>
+          • Drop to the ground, cover your head, and hold on.<br>
+          • Stay away from windows, mirrors, and heavy objects.<br>
+          • If outdoors, move to an open area away from buildings and power lines.</p>
+          
+          <h3>After:</h3>
+          <p>• Be cautious of aftershocks.<br>
+          • Check for injuries and administer first aid if needed.<br>
+          • Avoid damaged buildings and report gas leaks.<br>
+          • Listen to authorities for updates and evacuation orders.</p>
+
+          <div class="extra-info">
+            <figure>
+              <img src="images/kit.jpg" alt="Emergency Kit">
+              <figcaption>Emergency Kit</figcaption>
+            </figure>
+            <figure>
+              <img src="images/earthquake rescue.jpg" alt="Response Team">
+              <figcaption>Rescue Team</figcaption>
+            </figure>
+            <figure>
+              <img src="images/earthquake drill.jpg" alt="Drill Training">
+              <figcaption>Earthquake Drill</figcaption>
+            </figure>
+            <figure>
+              <img src="images/map.jpg" alt="Evacuation Map">
+              <figcaption>Evacuation Area Map</figcaption>
+            </figure>
+          </div>
+        `
+      },
+      fire: {
+        title: "Fire Safety Tips",
+        image: "images/fire.jpg",
+        content: `
+          <h3>Before:</h3>
+          <p>• Install smoke alarms and check batteries regularly.<br>
+          • Prepare a fire extinguisher and learn how to use it.<br>
+          • Create a family fire escape plan and practice it.<br>
+          • Avoid overloading electrical outlets.</p>
+          
+          <h3>During:</h3>
+          <p>• Stay low and crawl under the smoke.<br>
+          • Do not open hot doors; find another exit.<br>
+          • Use a wet cloth to cover your nose and mouth.<br>
+          • Once out, stay out — never re-enter a burning building.</p>
+          
+          <h3>After:</h3>
+          <p>• Wait for the fire department to declare it safe.<br>
+          • Document damages for insurance and recovery.<br>
+          • Check for hidden sparks or smoldering areas.<br>
+          • Seek help if experiencing trauma or injury.</p>
+
+          <div class="extra-info">
+            <figure>
+              <img src="images/kit.jpg" alt="Fire Kit">
+              <figcaption>Fire Safety Kit</figcaption>
+            </figure>
+            <figure>
+              <img src="images/team.jpg" alt="Firefighters">
+              <figcaption>Fire Team</figcaption>
+            </figure>
+            <figure>
+              <img src="images/fire drill.jpg" alt="Fire Drill">
+              <figcaption>Fire Drill</figcaption>
+            </figure>
+            <figure>
+              <img src="images/map.jpg" alt="Escape Plan">
+              <figcaption>Escape Route Map</figcaption>
+            </figure>
+          </div>
+        `
+      },
+      flood: {
+        title: "Flood Safety Tips",
+        image: "images/flood.jpg",
+        content: `
+          <h3>Before:</h3>
+          <p>• Know your area’s flood-prone zones.<br>
+          • Keep valuables and important documents in waterproof bags.<br>
+          • Elevate electrical appliances and furniture.<br>
+          • Prepare an emergency kit and plan evacuation routes.</p>
+          
+          <h3>During:</h3>
+          <p>• Move to higher ground immediately.<br>
+          • Avoid walking or driving through moving water.<br>
+          • Turn off electricity and gas at the main switch.<br>
+          • Listen to local authorities for safety announcements.</p>
+          
+          <h3>After:</h3>
+          <p>• Stay away from floodwaters—they may be contaminated.<br>
+          • Clean and disinfect everything that got wet.<br>
+          • Do not turn on electrical appliances until inspected.<br>
+          • Watch for snakes, insects, and other hazards.</p>
+
+          <div class="extra-info">
+            <figure>
+              <img src="images/kit.jpg" alt="Emergency Kit">
+              <figcaption>Flood Emergency Kit</figcaption>
+            </figure>
+            <figure>
+              <img src="images/flood team.jpg" alt="Rescue Team">
+              <figcaption>Rescue Operation Team</figcaption>
+            </figure>
+            <figure>
+              <img src="images/flood training.jpg" alt="Flood Training">
+              <figcaption>Flood Response Training</figcaption>
+            </figure>
+            <figure>
+              <img src="images/map.jpg" alt="Evacuation Map">
+              <figcaption>Flood Evacuation Map</figcaption>
+            </figure>
+          </div>
+        `
+      }
+    };
+
+    function openModal(type) {
+      const modal = document.getElementById('modal');
+      const body = document.getElementById('modal-body');
+      body.innerHTML = `
+        <h2>${disasterData[type].title}</h2>
+        <img src="${disasterData[type].image}" class="modal-img" alt="${type}">
+        ${disasterData[type].content}
+      `;
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.onclick = function(e) {
+      const modal = document.getElementById('modal');
+      if (e.target === modal) modal.style.display = 'none';
+    };
+  </script>
+</body>
+</html>
